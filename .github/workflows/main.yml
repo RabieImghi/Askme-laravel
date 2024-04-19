@@ -16,4 +16,4 @@ jobs:
         password: ${{ secrets.ftp_password }}
 
     - name: 🛠️ Access Laravel folder
-      run: cd laravel
+      run: cd Laravel
