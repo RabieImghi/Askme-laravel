@@ -13,7 +13,7 @@ jobs:
       with:
         server: 82.197.80.104
         username: u820736800.rabie.coders-strike.tech
-        password: ${{ FTP_PASSWORD }}
+        password: ${{ secrets.ftp_password }}
 
     - name: 🛠️ Access Laravel folder
       run: cd laravel
