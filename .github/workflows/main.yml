@@ -14,3 +14,6 @@ jobs:
         server: 82.197.80.104
         username: u820736800.rabie.coders-strike.tech
         password: @Rabie2003
+
+    - name: 🛠️ Access Laravel folder
+      run: cd laravel
