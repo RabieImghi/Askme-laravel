@@ -41,7 +41,6 @@ class UserRepository implements IUserRepository
         SocialLink::create([
             'user_id' => $user->id,
         ]);
-       
         return $user;
         
     }
