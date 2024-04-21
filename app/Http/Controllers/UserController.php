@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Models\Answer;
 use App\Models\Category;
 use App\Models\Follower;
+use App\Models\SocialLink;
 use Illuminate\Http\Request;
 use App\Repositories\Interfaces\IUserRepository;
 

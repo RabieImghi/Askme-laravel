@@ -142,7 +142,7 @@ class UserRepository implements IUserRepository
         }
     }
     public function updateUserInfoSocialLink($request){
-        $socialLink = SocialLink::where('user_id', $request->id)->get();
+        $socialLink = SocialLink::where('user_id', $request->id)->first();
         if($socialLink->count() == 0)
             SocialLink::create([
                 'user_id' => $request->id,
@@ -153,7 +153,9 @@ class UserRepository implements IUserRepository
                 'instagram' => $request->instagram,
                 'WebSite' => $request->WebSite,
             ]);
-        else
+        else{
+            $id = $socialLink->id;
+            $socialLink = SocialLink::find($id);
             $socialLink->update([
                 'facebook' => $request->facebook,
                 'twitter' => $request->twitter,
@@ -162,6 +164,7 @@ class UserRepository implements IUserRepository
                 'instagram' => $request->instagram,
                 'WebSite' => $request->WebSite,
             ]);
+        }
     }
     public function follow($request){
         return Follower::where('user_id',$request->user_id)->where('follower_id',$request->follower_id)->first();
