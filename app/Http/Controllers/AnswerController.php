@@ -36,6 +36,7 @@ class AnswerController extends Controller
         }
         return $IdUserVoted;
     }
+    
     public function getPostAnswers($id) {
         $data = [];
         $dataPost = [];
