@@ -142,7 +142,7 @@ class UserRepository implements IUserRepository
         }
     }
     public function updateUserInfoSocialLink($request){
-        $socialLink = SocialLink::where('user_id', $request->id)->first();
+        $socialLink = SocialLink::where('user_id', $request->id)->get();
         if($socialLink->count() == 0)
             SocialLink::create([
                 'user_id' => $request->id,
@@ -154,7 +154,7 @@ class UserRepository implements IUserRepository
                 'WebSite' => $request->WebSite,
             ]);
         else{
-            $id = $socialLink->id;
+            $id = $socialLink[0]->id;
             $socialLink = SocialLink::find($id);
             $socialLink->update([
                 'facebook' => $request->facebook,
