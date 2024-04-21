@@ -142,15 +142,26 @@ class UserRepository implements IUserRepository
         }
     }
     public function updateUserInfoSocialLink($request){
-        $socialLink = SocialLink::firstOrCreate(['user_id' => $request->id]);
-        $socialLink->update([
-            'facebook' => $request->facebook,
-            'twitter' => $request->twitter,
-            'linkedin' => $request->linkedin,
-            'Github' => $request->Github,
-            'instagram' => $request->instagram,
-            'WebSite' => $request->WebSite,
-        ]);
+        $socialLink = SocialLink::where('user_id', $request->id)->get();
+        if($socialLink->count() == 0)
+            SocialLink::create([
+                'user_id' => $request->id,
+                'facebook' => $request->facebook,
+                'twitter' => $request->twitter,
+                'linkedin' => $request->linkedin,
+                'Github' => $request->Github,
+                'instagram' => $request->instagram,
+                'WebSite' => $request->WebSite,
+            ]);
+        else
+            $socialLink->update([
+                'facebook' => $request->facebook,
+                'twitter' => $request->twitter,
+                'linkedin' => $request->linkedin,
+                'Github' => $request->Github,
+                'instagram' => $request->instagram,
+                'WebSite' => $request->WebSite,
+            ]);
     }
     public function follow($request){
         return Follower::where('user_id',$request->user_id)->where('follower_id',$request->follower_id)->first();
